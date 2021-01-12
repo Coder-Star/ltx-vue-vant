@@ -4,5 +4,5 @@
 
 module.exports = {
   title: "ltx-vue-vant-dev",
-  baseApi: "开发API地址"
+  baseApi: "https://www.fastmock.site/mock/5abd18409d0a2270b34088a07457e68f/LTXMock"
 }

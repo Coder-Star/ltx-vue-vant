@@ -9,8 +9,8 @@ module.exports = {
     },
     "postcss-pxtorem": {
       rootValue: 37.5,
-      propList: ["*"] // 指定需要转换的类，*为通配
-      // selectorBlackList: ['van-'] // 指定不转换的类
+      propList: ["*"], // 指定需要转换的类，*为通配
+      selectorBlackList: ["van-"] // 指定不转换的类
     }
   }
 }

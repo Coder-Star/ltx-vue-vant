@@ -44,11 +44,16 @@ module.exports = {
     "arrow-parens": ["error", "as-needed"],
     // 允许@作为src文件夹的别名
     "import/no-unresolved": [2, { ignore: ["^@/"] }],
+    // ES6对象简写属性名
+    "object-shorthand": ["error", "always"],
 
     // 允许动态名称的形式导入库
     "import/no-dynamic-require": "off",
     // 关闭 禁止对函数参数再赋值
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "vue/comment-directive": "off",
+    // 允许定义暂时未被使用的变量
+    "no-unused-vars": "off"
 
   }
 }

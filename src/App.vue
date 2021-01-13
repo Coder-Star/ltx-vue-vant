@@ -5,14 +5,15 @@
 -->
 
 <template>
-    <div id="app">
-        <!--使页面返回时不自动刷新页面-->
-        <transition :name="transitionName">
-            <navigation>
-                <router-view class="router-view"></router-view>
-            </navigation>
-        </transition>
-    </div>
+  <div id="app" v-touch:right="onSwipeRight" class="app-container">
+    <s-nav-bar :title="navBarTitle" v-if="showNavBar"/>
+    <transition :name="transitionName">
+      <!--使页面返回时不自动刷新页面-->
+      <navigation>
+        <router-view class="router-view"></router-view>
+      </navigation>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -20,12 +21,24 @@ export default {
   name: "App",
   data() {
     return {
-      transitionName: "slide-right"
+      transitionName: "slide-right",
+      navBarTitle: "",
+      showNavBar: true
     }
   },
   watch: {
     // 监听路由变化时的状态为前进还是后退，继而变化相应的动画
     $route(to, from) {
+      console.log(this.$navigation.getRoutes())
+      const { title, showNavBar } = to.meta
+      if (this.$tap.validate.validateNotNull(title)) {
+        this.navBarTitle = title
+      }
+      if (this.$tap.validate.validateNotNull(showNavBar)) {
+        this.showNavBar = showNavBar
+      } else {
+        this.showNavBar = true
+      }
       const { isBack } = this.$router
       if (isBack === true) {
         this.transitionName = "slide-right"
@@ -37,36 +50,45 @@ export default {
       }
       this.$router.isBack = false
     }
+  },
+  methods: {
+    onSwipeRight() {
+      console.log("返回上一页面")
+      this.$router.go(-1)
+    }
+
   }
 }
 </script>
 
-<style>
-    .router-view {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-    }
+<style lang="scss" scoped>
 
-    .slide-left-enter,
-    .slide-right-leave-to {
-        opacity: 0;
-        transform: translateX(100%);
-    }
+  .app-container {
+    height: 100vh;
+    width: 100vw;
+  }
 
-    .slide-left-leave-to,
-    .slide-right-enter {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
+  .router-view {
+    width: 100%;
+  }
 
-    .slide-left-enter-active,
-    .slide-left-leave-active,
-    .slide-right-enter-active,
-    .slide-right-leave-active {
-        transition: 0.5s; /*动画时间 */
-        position: absolute;
-        top: 0;
-    }
+  .slide-left-enter,
+  .slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .slide-left-leave-to,
+  .slide-right-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    transition: 0.5s; // 动画时间
+    position: absolute;
+  }
 </style>

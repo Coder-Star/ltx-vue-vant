@@ -23,7 +23,7 @@ service.interceptors.request.use(
     config.headers["Content-Type"] = "application/json"
 
     // 显示加载框
-    if (!Vue.prototype.$tap.validate.validateNull(config.config) && config.config.showLoad) {
+    if (Vue.prototype.$tap.validate.validateNotNull(config.config) && config.config.showLoad) {
       Toast.loading({
         forbidClick: true,
         loadingType: "spinner",
@@ -43,7 +43,7 @@ service.interceptors.response.use(
     // http状态码
     const code = response.status
 
-    if (!Vue.prototype.$tap.validate.validateNull(response.config.config) && response.config.config.showLoad) {
+    if (Vue.prototype.$tap.validate.validateNotNull(response.config.config) && response.config.config.showLoad) {
       Toast.clear()
     }
 
@@ -56,9 +56,9 @@ service.interceptors.response.use(
   error => {
     console.log(error)
     console.log(error.response)
-    if (Vue.prototype.$tap.validate.validateNull(error.response)) {
+    if (!Vue.prototype.$tap.validate.validateNotNull(error.response)) {
       Toast.clear()
-    } else if (!Vue.prototype.$tap.validate.validateNull(error.response.config.config) && error.response.config.config.showLoad) {
+    } else if (Vue.prototype.$tap.validate.validateNotNull(error.response.config.config) && error.response.config.config.showLoad) {
       Toast.clear()
     }
     return Promise.reject(error)

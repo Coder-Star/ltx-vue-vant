@@ -28,7 +28,7 @@ module.exports = {
     loaderOptions: {
       scss: {
         prependData: `
-          @import "@/assets/stylesheet/scss/variables.scss";
+          @import "@/style/scss/variables.scss";
         `
       },
       less: {
@@ -36,7 +36,7 @@ module.exports = {
           modifyVars: {
             // 定制vant样式，自定义样式路径
             hack: `
-                true; @import "@/assets/stylesheet/less/vantThemeCover.less";
+                true; @import "@/style/less/vantThemeCover.less";
             `
           }
         }

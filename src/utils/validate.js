@@ -9,19 +9,19 @@
  * @param val
  * @returns {boolean}
  */
-export function validateNull(val) {
+export function validateNotNull(val) {
   if (val instanceof Array) {
     if (val.length === 0) {
-      return true
+      return false
     }
   } else if (val instanceof Object) {
     if (JSON.stringify(val) === "{}") {
-      return true
+      return false
     }
   } else if (val === "null" || val == null || val === "undefined" || val === undefined || val === "") {
-    return true
+    return false
   }
-  return false
+  return true
 }
 
 /**

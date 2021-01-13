@@ -46,6 +46,8 @@ module.exports = {
     "import/no-unresolved": [2, { ignore: ["^@/"] }],
     // ES6对象简写属性名
     "object-shorthand": ["error", "always"],
+    // ES6对象简写属性名
+    "func-names": ["error", "as-needed"],
 
     // 允许动态名称的形式导入库
     "import/no-dynamic-require": "off",

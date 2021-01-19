@@ -13,6 +13,7 @@
       :label="item.label"
       @click="onClickItem(item, index)"
     />
+    <div class="div-style"></div>
   </div>
 </template>
 
@@ -22,21 +23,32 @@ export default {
   data() {
     return {
       list: [
-        { title: "css", label: "学习" }
+        { title: "css", label: "学习", code: "css" },
+        { title: "js", label: "js练习", code: "js" }
       ]
     }
   },
   props: {},
   created() {
-
   },
   computed: {},
   methods: {
     onClickItem(item, index) {
       console.log(item)
-      this.$router.push({
-        name: "css-menu"
-      })
+      switch (item.code) {
+        case "css":
+          this.$router.push({
+            name: "css-menu"
+          })
+          break
+        case "js":
+          this.$router.push({
+            name: "js-menu"
+          })
+          break
+        default:
+          break
+      }
     }
   }
 }
@@ -44,4 +56,9 @@ export default {
 
 <style scoped lang="scss">
 
+  .div-style {
+    background-color: blue;
+    width: 750px;
+    height: 20px;
+  }
 </style>

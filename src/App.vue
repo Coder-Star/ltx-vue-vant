@@ -30,6 +30,7 @@ export default {
     // 监听路由变化时的状态为前进还是后退，继而变化相应的动画
     $route(to, from) {
       console.log(this.$navigation.getRoutes())
+
       const { title, showNavBar } = to.meta
       if (this.$tap.validate.validateNotNull(title)) {
         this.navBarTitle = title

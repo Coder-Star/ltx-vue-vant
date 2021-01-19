@@ -14,6 +14,8 @@ import "@/utils"
 // filter引入
 import "@/filters"
 import App from "./App.vue"
+// 屏幕适配
+import "lib-flexible"
 
 // 注册全局filters
 Object.keys(filters.default).forEach(key => {

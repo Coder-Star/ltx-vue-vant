@@ -29,7 +29,7 @@ export function validateNotNull(val) {
  * @param str
  * @returns {boolean}
  */
-export function validatEmail(str) {
+export function validateEmail(str) {
   const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
   return reg.test(str)
 }

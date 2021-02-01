@@ -11,6 +11,9 @@
  * @returns 格式化后的日期字符串
  */
 export function formatDate(date, fmt) {
+  if (!(date instanceof Date)) {
+    return date
+  }
   const o = {
     "M+": date.getMonth() + 1,
     "d+": date.getDate(),

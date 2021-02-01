@@ -10,12 +10,14 @@ import axios from "./axiosService"
 import * as validate from "./validate"
 import * as formatError from "./formatError"
 import * as toast from "./toast"
+import * as format from "./format"
 
 const utils = {
   axios,
   validate,
   formatError,
-  toast
+  toast,
+  format
 }
 Vue.prototype.$tap = utils
 Vue.prototype._ = _

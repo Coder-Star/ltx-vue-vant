@@ -49,8 +49,35 @@ module.exports = {
     config.name = title
   },
 
+  // 链式操作
   chainWebpack: config => {
     config.plugins.delete("preload")
     config.plugins.delete("prefetch")
+
+    // 别名
+    // vue-cli默认会将@作为src的别名
+    config.resolve.alias
+      .set("@components", resolve("src/components"))
+
+    // config.module
+    //   .rule("style-loader")
+    //   .test(/\.(scss|css)$/)
+    //   .use("style-loader")
+    //   .loader("style-loader")
+    //   .end()
+
+    // config.module
+    //   .rule("css-loader")
+    //   .test(/\.(scss|css)$/)
+    //   .use("css-loader")
+    //   .loader("css-loader")
+    //   .end()
+
+    // config.module
+    //   .rule("postcss-loader")
+    //   .test(/\.(scss|css)$/)
+    //   .use("postcss-loader")
+    //   .loader("postcss-loader")
+    //   .end()
   }
 }

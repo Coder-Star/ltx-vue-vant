@@ -6,32 +6,36 @@
 
 <template>
   <div>
-
+   <span>{{date | formatDate('yyyy')}}</span>
   </div>
 </template>
 
 <script>
+import mixinForm from "../mixins/mixin_form"
+
 export default {
   name: "JSMenu",
+  mixins: [mixinForm],
   data() {
     return {
       list: {
 
-      }
+      },
+      date: Date
     }
   },
   props: {},
   created() {
+    this.date = new Date()
     this.testJS()
+
+    const number = 1111111.222222
+    console.log(this.$tap.format.formatNumber(number, 2))
   },
   computed: {},
   methods: {
     testJS() {
-      const obj = {
-        name: "张三",
-        age: "李四"
-      }
-      console.log(obj)
+
     }
   }
 }

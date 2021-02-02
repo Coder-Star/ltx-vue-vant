@@ -6,7 +6,8 @@
 
 <template>
   <div>
-   <span>{{date | formatDate('yyyy')}}</span>
+    <span>{{date | formatDate('yyyy')}}</span>
+    <button v-copy="copyText">copy</button>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ export default {
       list: {
 
       },
-      date: Date
+      date: Date,
+      copyText: ""
     }
   },
   props: {},

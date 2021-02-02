@@ -1,7 +1,8 @@
 import Vue from "vue"
 import Navigation from "vue-navigation"
 import touch from "vue-directive-touch"
-import globalComponents from "@/components/index"
+import globalComponents from "./components"
+import directive from "./directive"
 import * as filters from "./filters"
 import router from "./routers"
 import store from "./store"
@@ -25,6 +26,8 @@ Object.keys(filters.default).forEach(key => {
   })
 })
 
+// 全局自定义指令
+Vue.use(directive)
 // 全局自定义组件
 Vue.use(globalComponents)
 
